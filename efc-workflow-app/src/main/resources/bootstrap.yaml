@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: efc-workflow
+  cloud:
+    nacos:
+      config:
+        enabled: true
+        server-addr: ${NACOS_SERVER}
+        namespace: EFC
+        username: ${NACOS_USERNAME}
+        password: ${NACOS_PASSWORD}
+        group: ${NACOS_APP_CONFIG_GROUP}
+        prefix: ${spring.application.name}
+        refresh-enabled: true
+        extension-configs[0].data-id: ${NACOS_COMMON_CONFIG:common.yaml}
+        extension-configs[0].group: ${NACOS_APP_CONFIG_GROUP}
+        extension-configs[1].data-id: ${spring.application.name}.yaml
+        extension-configs[1].group: ${NACOS_APP_CONFIG_GROUP}
+  activiti:
+    db-history-used: true
